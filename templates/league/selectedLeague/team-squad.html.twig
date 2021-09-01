@@ -1,0 +1,35 @@
+{% extends 'league/selectedLeague/team.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+
+<div class="float-left" style="width: 50%">
+    <form method="post">
+        <h4>Squad</h4>
+        <br>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Nationality</th>
+            </tr>
+            <tr>
+                {% for squad in team.squad %}
+                <tr> <td><a href="{{ path('selectedPlayer', {name: name,id: id,tid: tid,pid:squad.id}) }}"> {{ squad.name }} </a></td>
+                    {% if squad.role == "PLAYER" %}
+                    <td>{{ squad.position }}</td>
+                    {% else %}
+                    <td> {{ squad.role }} </td>
+                    {% endif %}
+                <td> {{ squad.nationality }} </td>
+                {% endfor %}        
+            </tr>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+        
+    </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'myProfile/user.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+{% endfor %}
+{% for message in app.flashes('warning') %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+{% endfor %}
+<br>
+<form method="POST">
+        <h4 align="center">{{ quiz.name }}</h4><br>
+        <div style="width: 45%;margin:0 auto;">
+            <p>1.{{ quiz.quest1 }}</p>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans1a" name="ans1" value="ans1a">
+                <label class="custom-control-label" for="ans1a">a) {{ quiz.ans1a }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans1b" name="ans1" value="ans1b">
+                <label class="custom-control-label" for="ans1b">b) {{ quiz.ans1b }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans1c" name="ans1" value="ans1c">
+                <label class="custom-control-label" for="ans1c">c) {{ quiz.ans1c }}</label>
+            </div><br>
+
+            <p>2.{{ quiz.quest2 }}</p>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans2a" name="ans2" value="ans2a">
+                <label class="custom-control-label" for="ans2a">a) {{ quiz.ans2a }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans2b" name="ans2" value="ans2b">
+                <label class="custom-control-label" for="ans2b">b) {{ quiz.ans2b }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans2c" name="ans2" value="ans2c">
+                <label class="custom-control-label" for="ans2c">c) {{ quiz.ans2c }}</label>
+            </div><br>
+
+            <p>3.{{ quiz.quest3 }}</p>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans3a" name="ans3" value="ans3a">
+                <label class="custom-control-label" for="ans3a">a) {{ quiz.ans3a }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans3b" name="ans3" value="ans3b">
+                <label class="custom-control-label" for="ans3b">b) {{ quiz.ans3b }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans3c" name="ans3" value="ans3c">
+                <label class="custom-control-label" for="ans3c">c) {{ quiz.ans3c }}</label>
+            </div><br>
+
+            <p>4.{{ quiz.quest4 }}</p>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans4a" name="ans4"  value="ans4a">
+                <label class="custom-control-label" for="ans4a">a) {{ quiz.ans4a }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans4b" name="ans4"  value="ans4b">
+                <label class="custom-control-label" for="ans4b">b) {{ quiz.ans4b }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans4c" name="ans4"  value="ans4c">
+                <label class="custom-control-label" for="ans4c">c) {{ quiz.ans4c }}</label>
+            </div><br>
+
+            <p>5.{{ quiz.quest5 }}</p>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans5a" name="ans5" value="ans5a">
+                <label class="custom-control-label" for="ans5a">a) {{ quiz.ans5a }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans5b" name="ans5" value="ans5b">
+                <label class="custom-control-label" for="ans5b">b) {{ quiz.ans5b }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="ans5c" name="ans5" value="ans5c">
+                <label class="custom-control-label" for="ans5c">c) {{ quiz.ans5c }}</label>
+            </div><br>
+            {% if user.id in quiz.arrUsers %}
+            <p>You have already answered the quiz!</p>
+            {% else %}
+            <button class="btn btn-outline-primary my-2 my-sm-0"  id="submit" name="submit" type="submit">Confirm</button>
+            {% endif %}
+        </div>
+</form>
+
+{% endblock %}

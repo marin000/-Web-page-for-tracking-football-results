@@ -1,0 +1,26 @@
+{% extends 'myProfile/admin.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+<br>
+
+<div style="width: 50%;margin:0 auto;">
+    <h4 align="center">Users</h4><br>
+    <table class="table table-striped">
+        <tr>
+            {% if userDB != null %}
+                <th>{{ userDB.name }}</th>
+                {% if userDB.blocked == 0 %}
+                <th><a href="{{ path('adminUsersB',{id: userDB.id}) }}" class="btn btn-primary">Block</a></th>
+                {% else %}
+                    <th><a href="{{ path('adminUsersU',{id: userDB.id}) }}" class="btn btn-primary">Unblock</a></th>
+                {% endif %}
+                <th><a href="{{ path('adminUsersD',{id: userDB.id}) }}" class="btn btn-primary">Delete</a></th>
+            {% else %}
+                <th rowspan="3">User cannot be found.</th>
+            {% endif %}
+        </tr>
+    </table>
+</div>
+ {% endblock %}

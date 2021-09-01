@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+<ul class="nav nav-tabs" style="background-color: #2289ff">
+    <li class="nav-item">
+      <a class="nav-link" style="color: black" href="{{ path('selectedSquad',{id: id,name: name,tid: tid}) }}">Squad</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color: black" href="{{ path('selectedMatches',{id: id,name: name,tid: tid}) }}">Matches</a>
+    </li>
+</ul>
+<br>
+    <h4> {{ team.name }} 
+        {% if user==null %}
+        <a href="{{ path('app_login')}}" class="btn btn-outline-primary ">Follow</a></h4>
+        {% else %}
+        <a href="{{ path('favClub',{id: id,name: name,tid: tid,teamName: team.name}) }}" class="btn btn-outline-primary ">Follow</a></h4>
+        {% endif %}
+<div class="float-right" style="width: 45%">
+    <h4>Basic informations</h4>
+    <br>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Name:</th>
+                <th>{{ team.name }}</th>
+            </tr>
+            <tr>
+                <th>Country:</th>
+                <th>{{ team.area.name }}</th>
+            </tr>
+            <tr>
+                <th>Tla:</th>
+                <th>{{ team.tla }}</th>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <th>{{ team.address }} </th>
+            </tr>
+            <tr>
+                <th>Telephone:</th>
+                <th>{{ team.phone }} </th>
+            </tr>
+            <tr>
+                <th>Website:</th>
+                <th>{{ team.website  }}</th>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <th>{{ team.email }}</th>
+            </tr>
+            <tr>
+                <th>Founded:</th>
+                <th>{{ team.founded }}</th>
+            </tr>
+            <tr>
+                <th>Stadion:</th>
+                <th>{{ team.venue }}</th>
+            </tr>
+            <tr>
+                <th>Club colors:</th>
+                <th>{{ team.clubColors }}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

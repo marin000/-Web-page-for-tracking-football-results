@@ -1,0 +1,36 @@
+{% extends 'league/selectedLeague.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+
+
+<div class="float-left" style="width: 60%">
+        <form method="post">
+            <h5>Current standing </h5>
+            <table class="table table-striped">
+                <tr>
+                <th>Position</th>
+                <th>Team Name</th>
+                <th>Goal Difference</th>
+                <th>Points</th>
+                </tr>
+                <tr>
+                    {% for standing in standings if standing.type=='TOTAL' %} 
+                    {% for table in standing.table %}
+                 <tr> <td> {{ table.position }} </td>
+                  <td><a href="{{ path('selectedTeam', {name: name,id: id,tid: table.team.id}) }}"> {{ table.team.name}} </a></td>
+                  <td> {{ table.goalDifference }} </td>
+                  <td> {{ table.points }} </td></tr>
+                  
+                  {% endfor %}
+                {% endfor %}
+        
+                </tr>
+                <tr>
+                </tr>
+            </table>
+            
+        </form>
+        </div>
+{% endblock %}

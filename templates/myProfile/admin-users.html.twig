@@ -1,0 +1,30 @@
+{% extends 'myProfile/admin.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+<br>
+<form method="post">
+<div class="float-left" style="width: 25%;display: flex">
+        <input class="form-control mr-sm-2" style="width: 40%" type="search" id="searchUser" name="searchUser" placeholder="Search user" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button></div>
+</div>
+
+<div style="width: 50%;margin:0 auto;">
+    <h4 align="center">Users</h4><br>
+    <table class="table table-striped">
+        {% for userDB in usersDB %}
+        <tr>
+            <th>{{ userDB.name }}</th>
+            {% if userDB.blocked == 0 %}
+            <th><a href="{{ path('adminUsersB',{id: userDB.id}) }}" class="btn btn-primary">Block</a></th>
+            {% else %}
+                <th><a href="{{ path('adminUsersU',{id: userDB.id}) }}" class="btn btn-primary">Unblock</a></th>
+            {% endif %}
+            <th><a href="{{ path('adminUsersD',{id: userDB.id}) }}" class="btn btn-primary">Delete</a></th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</form>
+{% endblock %}

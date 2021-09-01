@@ -1,0 +1,30 @@
+{% extends 'myProfile/admin.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+<br>
+<form method="POST">
+<h4 align="center">Comments</h4><br>
+<div style="width: 70%;margin:0 auto;">
+    <div style="height:335px;overflow-y: auto;">
+            <a href="{{ path('adminCommentsD') }}" class="btn btn-primary">Clear all</a>
+<table class="table table-bordered">
+    {% for comment in comments %}
+    <tr>
+        <th style="width: 15%">{{ comment.userId.name }}</th>
+        <th>{{ comment.content }}</th>
+        <th style="width: 15%">{{ comment.time|date("H:i:s") }}</th>
+    </tr>
+    {% endfor %}
+</table>
+    </div>
+<div class="input-group mb-3">
+        <input type="text" class="form-control" id="newComment" name="newComment" placeholder="Write a comment" aria-label="Write a comment" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="submit" id="button-addon2">Post</button>
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}

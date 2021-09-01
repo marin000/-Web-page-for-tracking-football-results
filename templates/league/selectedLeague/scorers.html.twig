@@ -1,0 +1,36 @@
+{% extends 'league/selectedLeague.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+
+
+<div class="float-left" style="width: 60%">
+        <form method="post">
+            <h5>Top scorers</h5>
+               <table class="table table-striped">
+                <tr>
+                <th>Position</th>
+                <th>Player Name</th>
+                <th>Club</th>
+                <th>Goals</th>
+                </tr>
+                <tr>
+                    {% set var = 0 %}
+                    {% for scorer in scorers %} 
+                 <tr> 
+                     <td>{% set var = var+1 %} {{ var }}</td>
+                  <td> {{ scorer.player.name}} </td>
+                  <td> {{ scorer.team.name }} </td>
+                  <td> {{ scorer.numberOfGoals }} </td>
+                </tr>
+                {% endfor %}
+        
+                </tr>
+                <tr>
+                </tr>
+            </table>
+            
+        </form>
+        </div>
+{% endblock %}

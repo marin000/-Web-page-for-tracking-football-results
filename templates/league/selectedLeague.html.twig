@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+<ul class="nav nav-tabs" style="background:linear-gradient(to right,#66ccff -3%, #3366cc 100%);margin-top: -0.1%">
+    <li class="nav-item">
+      <a class="nav-link" style="color: black" href="{{ path('selectedStanding',{id: id,name: name}) }}">Standing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color: black" href="{{ path('selectedScorers',{id: id,name: name}) }}">Top scorers</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" style="color: black" href="{{ path('selectedThisWeek',{id: id,name: name}) }}">This week</a>
+    </li>
+</ul>
+<br>
+<div class="float-left">
+    <h3>{{ name }}
+    <img src="{{ info[0].logo }}" alt="England" style="width: 15%;height: 15%;"></h3>
+</div>
+
+<div class="float-right" style="width: 35%">
+    <h4>Information about competition</h4><br>
+    <table class="table table-bordered" style="background-color: #f0f5f5">
+        <tbody>
+            {% for i in info %}
+            <tr>
+                <th>Current champions:</th>
+                <th>{{ i.CurrentChamp }}</th>
+            </tr>
+            <tr>
+                <th>Most championships:</th>
+                <th>{{ i.MostChamp }}</th>
+            </tr>
+            <tr>
+                <th>Relegation to:</th>
+                <th>{{ i.RelegationTo }}</th>
+            </tr>
+            <tr>
+                <th>Number of teams:</th>
+                <th>{{ i.TeamsBr }} </th>
+            </tr>
+            <tr>
+                <th>Most appearances:</th>
+                <th>{{ i.MostApp }} </th>
+            </tr>
+            <tr>
+                <th>Top goalscorer:</th>
+                <th>{{ i.TopScorer }}</th>
+            </tr>
+            <tr>
+                <th>Goals per match:</th>
+                <th>{{ i.GoalsPerMatch }}</th>
+            </tr>
+            <tr>
+                <th>Home teams win:</th>
+                <th>{{ i.HomeWins }}</th>
+            </tr>
+            <tr>
+                <th>Tie:</th>
+                <th>{{ i.Tie }}</th>
+            </tr>
+            <tr>
+                <th>Away teams win:</th>
+                <th>{{ i.AwayWins }}</th>
+            </tr>
+            <tr>
+                <th>Yellow cards:</th>
+                <th>{{ i.YellowCard }}</th>
+            </tr>
+            <tr>
+                <th>Red cards:</th>
+                <th>{{ i.RedCard }}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

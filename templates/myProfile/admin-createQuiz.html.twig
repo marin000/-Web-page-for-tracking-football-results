@@ -1,0 +1,96 @@
+{% extends 'myProfile/admin.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+<br>
+<div class="float-left" style="width: 50%;margin-left: 5%">
+    <form method="post">
+        <h4>Create new quiz</h4><br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Quiz name:</span>
+            </div>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+            <br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Question 1 and answer:</span>
+            </div>
+            <input type="text"  id="quest1" name="quest1" class="form-control">
+            <input type="text" id="ans1correct" name="ans1correct" class="form-control">
+        </div>
+        <p>3 possible answers:</p>
+        <input type="text" id="ans1a" name="ans1a" class="form-control">
+        <input type="text" id="ans1b" name="ans1b" class="form-control">
+        <input type="text" id="ans1c" name="ans1c" class="form-control">
+        <br><br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Question 2 and answer:</span>
+            </div>
+            <input type="text"  id="quest2" name="quest2" class="form-control">
+            <input type="text" id="ans2correct" name="ans2correct" class="form-control">
+            </div>
+        <p>3 possible answers:</p>
+        <input type="text" id="ans2a" name="ans2a" class="form-control">
+        <input type="text" id="ans2b" name="ans2b" class="form-control">
+        <input type="text" id="ans2c" name="ans2c" class="form-control">
+        
+        <br><br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Question 3 and answer:</span>
+            </div>
+            <input type="text"  id="quest3" name="quest3" class="form-control">
+            <input type="text" id="ans3correct" name="ans3correct" class="form-control">
+            </div>
+        <p>3 possible answers:</p>
+        <input type="text" id="ans3a" name="ans3a" class="form-control">
+        <input type="text" id="ans3b" name="ans3b" class="form-control">
+        <input type="text" id="ans3c" name="ans3c" class="form-control">
+
+        <br><br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Question 4 and answer:</span>
+            </div>
+            <input type="text"  id="quest4" name="quest4" class="form-control">
+            <input type="text" id="ans4correct" name="ans4correct" class="form-control">
+            </div>
+        <p>3 possible answers:</p>
+        <input type="text" id="ans4a" name="ans4a" class="form-control">
+        <input type="text" id="ans4b" name="ans4b" class="form-control">
+        <input type="text" id="ans4c" name="ans4c" class="form-control">
+
+        <br><br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Question 5 and answer:</span>
+            </div>
+            <input type="text"  id="quest5" name="quest5" class="form-control">
+            <input type="text" id="ans5correct" name="ans5correct" class="form-control">
+            </div>
+        <p>3 possible answers:</p>
+        <input type="text" id="ans5a" name="ans5a" class="form-control">
+        <input type="text" id="ans5b" name="ans5b" class="form-control">
+        <input type="text" id="ans5c" name="ans5c" class="form-control">
+            <br>
+         <button class="btn btn-outline-primary my-2 my-sm-0"  id="submit" name="submit" type="submit">Upload quiz</button>
+    </form>
+</div>
+
+
+<div class="float-right" style="width: 35%">
+        <h4 align="center">All trivia</h4><br>
+        <table class="table table-striped">
+            {% for quiz in quizAll %}
+            <tr>
+                <th><a href="{{ path('adminQuizLook',{id: quiz.id}) }}">{{ quiz.name }}</a></th>
+                <th><a href="{{ path('adminQuizD',{id: quiz.id}) }}" class="btn btn-primary">Delete</a></th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

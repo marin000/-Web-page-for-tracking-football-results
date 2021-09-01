@@ -1,0 +1,39 @@
+{% extends 'league/selectedLeague.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+
+<div class="float-left" style="width: 60%">
+        <form method="post">
+            <div style="display: flex">
+                <input class="form-control mr-sm-2" style="width: 15%" type="search" id="matchday" name="matchday" placeholder="Matchday" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button></div><br>
+               <table class="table table-striped">
+                <tr>
+                <th>Home Team</th>
+                <th></th>
+                <th>Away Team</th>
+                <th colspan="3">Result</th>
+                <th>Time</th>
+                </tr>
+                <tr>
+                    {% for match in matches.matches %} 
+                 <tr> 
+                    <td>{{ match.homeTeam.name }}</td>
+                    <td>-</td>
+                  <td> {{ match.awayTeam.name}} </td>
+                  <td> {{ match.score.fullTime.homeTeam }} </td>
+                  <td>:</td>
+                  <td> {{ match.score.fullTime.awayTeam }} </td>
+                  <td> {{ match.utcDate }} </td>
+                </tr>
+                {% endfor %}
+        
+                </tr>
+                <tr>
+                </tr>
+            </table>
+        </form>
+        </div>
+{% endblock %}

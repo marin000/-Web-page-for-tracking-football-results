@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+    <br>
+    <div class="float-left" style="width: 45%">
+            <h4>Basic informations
+                {% if user==null %}
+                <a href="{{ path('app_login')}}" class="btn btn-outline-primary ">Follow</a>
+                {% else %}
+                <a href="{{ path('favPlayer',{id: id,name: name,tid: team.id,pid: player.id,playerName: player.name}) }}" class="btn btn-outline-primary ">Follow</a>
+                {% endif %}
+            </h4>
+            <br>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Name:</th>
+                        <th>{{ player.name }}</th>
+                    </tr>
+                    <tr>
+                        <th>First name:</th>
+                        <th>{{ player.firstName }}</th>
+                    </tr>
+                    <tr>
+                        <th>Last name:</th>
+                        <th>{{ player.lastName }}</th>
+                    </tr>
+                    <tr>
+                        <th>Date of birth:</th>
+                        <th>{{ player.dateOfBirth }} </th>
+                    </tr>
+                    <tr>
+                        <th>Country of birth:</th>
+                        <th>{{ player.countryOfBirth }} </th>
+                    </tr>
+                    <tr>
+                        <th>Nationality:</th>
+                        <th>{{ player.nationality }}</th>
+                    </tr>
+                    <tr>
+                        <th>Team:</th>
+                        <th>{{ team.name }}</th>
+                    </tr>
+                    <tr>
+                        <th>Position:</th>
+                        <th>{{ player.position }}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

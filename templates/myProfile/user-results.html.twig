@@ -1,0 +1,41 @@
+{% extends 'myProfile/user.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+<br>
+<h4 align="center">Results</h4><br>
+<div style="width: 40%;margin:0 auto;">
+    {% set position = 0 %}
+        <div style="height:335px;overflow-y: auto;">
+        <table class="table table-striped">
+                <tr>
+                    <th></th>
+                    <th>Username</th>
+                    <th>Result</th>
+                </tr>
+                {% set i = 1 %}
+                {% for userRes in usersResults %}
+                    {% if userRes == user %}
+                    {% set position = i %}
+                    {% endif %}
+                <tr>
+                    <td>{{ i }}.</td>
+                    <td>{{ userRes.name }}</td>
+                    <td>{{ userRes.result }}</td>
+                </tr>
+                {% set i = i+1 %}
+                {% endfor %}
+            </table>
+        </div>
+    <div style="margin-top: 2%">
+        <table class="table table-striped">
+            <tr>
+                <td>{{ position }}.</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.result }}</td>
+            </tr>
+        </table>
+    </div>
+        </div>
+{% endblock %}

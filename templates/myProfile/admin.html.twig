@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Football results{% endblock %}
+{% block body %}
+{{ parent() }}
+<ul class="nav nav-tabs" style="background:linear-gradient(to right,#66ccff -3%, #3366cc 100%);margin-top: -0.1%">
+  <li class="nav-item">
+      <a class="nav-link" href="{{ path('adminUsers')}}" style="color: black">Users</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('adminComments')}}" style="color: black">Comments</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('adminQuiz')}}" style="color: black">Quiz</a>
+    </li>
+</ul>
+{% endblock %}
